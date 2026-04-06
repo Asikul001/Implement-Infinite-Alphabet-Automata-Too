@@ -33,9 +33,9 @@ struct automata_data_type {
    ~automata_data_type() {}
 };
 
-void put_data(data &,automata_data_type &);
-void show_data(data &,automata_data_type &);
+void put_data(data &,std::map<std::pair<int, std::string>, int>&,automata_data_type &);
+void show_data(data &,std::map<std::pair<int, std::string>, int>&,automata_data_type &);
 void entry_point();
 bool check_dfa_nfa(std::string,int,data ,automata_data_type);
-bool check_register_automata(std::string,int,data ,automata_data_type);
+bool check_register_automata(std::string &,std::vector<int> &,std::map<std::pair<int, std::string>, int>&,data ,automata_data_type);
 #endif

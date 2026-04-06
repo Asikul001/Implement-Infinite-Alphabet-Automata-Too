@@ -1,7 +1,7 @@
 #include "global.hpp"
 
 
-void show_data(data &init,automata_data_type &transition_pair)
+void show_data(data &init,std::map<std::pair<int, std::string>, int> &register_update_pair,automata_data_type &transition_pair)
 {
   std::cout<< "Specific Automata name : "<<init.automata_name<<std::endl;
   std::cout << "Total Number of States : " << init.states << std::endl;
@@ -14,6 +14,10 @@ void show_data(data &init,automata_data_type &transition_pair)
   if(init.automata_name=="ra"||init.automata_name=="RA" && !transition_pair.ra_pair.empty())
   {
     std::cout<<"Number of register :"<<init.no_register<<std::endl;
+    std::cout<<"\nUpdate Register :"<<std::endl;
+    for (auto it = register_update_pair.begin(); it != register_update_pair.end(); it++) {
+      std::cout << "q" << it->first.first << " -> " << it->first.second<< " = r" << it->second << std::endl;
+    }
     std::cout << std::endl<< "Transactions : " << std::endl;
     std::cout << "First State\t"<< "Input\t"<< "Register\t"<< "Next state\t" << std::endl<< std::endl;
       for (auto it = transition_pair.ra_pair.begin(); it != transition_pair.ra_pair.end(); it++) {
