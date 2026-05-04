@@ -4,7 +4,7 @@
 struct temp {
   int first_state;
   std::string transaction;
-  std::string register_name;
+  int register_name;
   int next_state;
 };
 
