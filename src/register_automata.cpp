@@ -1,4 +1,5 @@
 #include "global.hpp"
+
 bool check_register_automata(
     std::string user_input,
     std::vector<std::string> all_register_value,
@@ -8,13 +9,14 @@ bool check_register_automata(
     automata_data_type transition_pair)
 {
     if (user_input.empty())
-    {  
+    {
         return std::find(init.final_state.begin(),
                          init.final_state.end(),
                          current_state) != init.final_state.end();
     }
 
-    std::string current_label="", current_value="", current_string="", remianing_string="";
+    std::string current_label = "", current_value = "";
+    std::string current_string = "", remaining_string = "";
 
     std::stringstream ss(user_input);
     std::getline(ss, current_string, '(');
@@ -24,39 +26,63 @@ bool check_register_automata(
     std::getline(ss_again, current_label, ',');
     std::getline(ss_again, current_value);
 
-    std::getline(ss, remianing_string);
+    std::getline(ss, remaining_string);
 
     auto range = transition_pair.ra_pair.equal_range({current_state, current_label});
-
+    std::cout<<current_state<<" "<<all_register_value[0]<<" "<<all_register_value[1]<<std::endl;
     for (auto it = range.first; it != range.second; ++it)
     {
-        auto all_new_register_value = all_register_value;
-        auto update = register_update_pair.find({current_state, current_label});
-        // std::cout<<current_state<<" "<<all_new_register_value[1]<<" "<<all_new_register_value[2]<<std::endl;
-        if (current_value == all_new_register_value[it->second.first])
+        //std::cout<<"matched"<<std::endl;
+        int reg = it->second.first;    
+        int next_state = it->second.second;
+        int idx = reg - 1;
+
+        if (idx >= 0 && idx < all_register_value.size())
         {
-            if (check_register_automata(remianing_string,
-                all_new_register_value,
-                register_update_pair,
-                it->second.second,
-                init,
-                transition_pair))
+            if (all_register_value[idx] == current_value)
             {
-                return true;
+                if (check_register_automata(
+                        remaining_string,
+                        all_register_value,   
+                        register_update_pair,
+                        next_state,
+                        init,
+                        transition_pair))
+                {
+                    return true;
+                }
             }
         }
-        else
-        {
-            if (update != register_update_pair.end())
-            {
-                all_new_register_value[update->second] = current_value;
+    }
 
-                if (check_register_automata(remianing_string,
-                    all_new_register_value,
-                    register_update_pair,
-                    it->second.second,
-                    init,
-                    transition_pair))
+    auto update = register_update_pair.find({current_state, current_label});
+
+    if (update != register_update_pair.end())
+    {
+        int j = update->second;   
+        int idx = j - 1;          
+
+        for (auto it = range.first; it != range.second; ++it)
+        {
+            int reg = it->second.first;
+            int next_state = it->second.second;
+
+            if (reg == j)
+            {
+                auto new_registers = all_register_value;
+
+                if (idx >= 0 && idx < new_registers.size())
+                {
+                    new_registers[idx] = current_value;
+                }
+
+                if (check_register_automata(
+                        remaining_string,
+                        new_registers,
+                        register_update_pair,
+                        next_state,
+                        init,
+                        transition_pair))
                 {
                     return true;
                 }

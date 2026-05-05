@@ -20,7 +20,7 @@ void entry_point()
         {
           if (!transition_pair.ra_pair.empty())
           {
-            std::vector<std::string> register_value(init.no_register+1,"$");
+            std::vector<std::string> register_value(init.no_register,"$");
              if(check_register_automata(user_input,register_value,register_update_pair,init.init_state,init,transition_pair))
             {
                 std::cout << "String is Accepted" << std::endl;
