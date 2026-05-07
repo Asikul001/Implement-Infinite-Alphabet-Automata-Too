@@ -29,7 +29,7 @@ temp get_data(std::string& hold,std::string automata_name){
 void put_data(data &init ,std::map<std::pair<int, std::string>, int> &register_update_pair,automata_data_type &transition_pair) {
 
   
-std::fstream file("/home/asikul/7th sem/project/check.txt");
+std::fstream file("../check.txt");
 if (file.is_open()) {
 
     file >> init.automata_name;
