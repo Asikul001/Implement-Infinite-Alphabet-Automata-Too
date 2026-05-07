@@ -8,7 +8,7 @@ void show_data(data &init,std::map<std::pair<int, std::string>, int> &register_u
   std::cout << "Initial State : q" << init.init_state << std::endl;
    std::cout << "Final State :"  << std::endl;
         for (int i = 0; i < init.final_state.size(); i++) {
-            std::cout << "q" << init.final_state[i] << std::endl;
+            std::cout << "q" << init.final_state[i] << " ";
         }
 
   if(init.automata_name=="ra"||init.automata_name=="RA" && !transition_pair.ra_pair.empty())
