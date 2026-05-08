@@ -29,7 +29,6 @@ bool check_register_automata(
     std::getline(ss, remaining_string);
 
     auto range = transition_pair.ra_pair.equal_range({current_state, current_label});
-    // std::cout<<current_state<<" "<<all_register_value[0]<<" "<<all_register_value[1]<<std::endl;
     for (auto it = range.first; it != range.second; ++it)
     {
         //std::cout<<"matched"<<std::endl;
