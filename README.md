@@ -99,3 +99,38 @@ Run the executable:
 ```
 
 ---
+
+## ⚙️ How to Set Automata Rules 
+Create a Simple txt file where need to follow some particular format 
+### DFA/NFA Text File structure
+```
+dfa   //automata name
+3     //Number of state
+1     // Initial State
+2 3   //final state
+0 a 1 //transition
+...
+...
+
+```
+```
+aaa  //input Structure
+```
+### RA Text File structure
+```
+ra        //automata name
+3           //No Of State
+0           // initial State
+2           // No Of Register
+2           // final State
+{0 a 1}     // Update Register Function
+{0 b 1}
+{1 a 2}
+0 a 1 0     // Transition
+0 b 1 0
+0 a 1 1
+```
+```
+(a,0)(a,1)(a,0)  //input Structure
+```
+
