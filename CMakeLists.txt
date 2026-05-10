@@ -6,9 +6,8 @@ add_executable(infinite_Automata_Tool ${SOURCE})
 
 target_include_directories(infinite_Automata_Tool PRIVATE ./header )
 
-target_link_libraries(
-    infinite_Automata_Tool
-    sfml-graphics
-    sfml-window
-    sfml-system
-)
+target_include_directories(infinite_Automata_Tool PRIVATE./SFML/include)
+
+target_link_directories(infinite_Automata_Tool PRIVATE./SFML/lib)
+
+target_link_libraries( infinite_Automata_Tool sfml-graphics sfml-window sfml-system)
