@@ -31,7 +31,6 @@ bool check_register_automata(
     auto range = transition_pair.ra_pair.equal_range({current_state, current_label});
     for (auto it = range.first; it != range.second; ++it)
     {
-        //std::cout<<"matched"<<std::endl;
         int reg = it->second.first;    
         int next_state = it->second.second;
         int idx = reg - 1;
