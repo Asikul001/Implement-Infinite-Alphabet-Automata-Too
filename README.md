@@ -126,6 +126,8 @@ ra        //automata name
 {0 a 1}     // Update Register Function
 {0 b 1}
 {1 a 2}
+...
+...
 0 a 1 0     // Transition
 0 b 1 0
 0 a 1 1
