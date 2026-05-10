@@ -15,7 +15,7 @@
 #include <vector>
 #include <variant>
 #include <algorithm>
-#include <SFML/Graphics.hpp>
+#include "../SFML/Graphics.hpp"
 
 // user defined data types
 struct data {
