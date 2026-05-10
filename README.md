@@ -30,8 +30,10 @@ The project is designed for learning, research, and experimentation in Automata 
 
 - C++
 - CMake
+- SFML (Simple and Fast Multimedia Library)
 - STL (Standard Template Library)
 - Automata Theory Concepts
+- Data Structures & Algorithms
 
 ---
 ## ⚙️ Requirements
