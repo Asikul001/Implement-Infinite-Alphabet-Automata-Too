@@ -1,13 +1,38 @@
 cmake_minimum_required(VERSION 3.10)
 
-file(GLOB SRC "./src/*.cpp") 
-set( SOURCE ./main.cpp ${SRC} ) 
-add_executable(infinite_Automata_Tool ${SOURCE})
+project(infinite_Automata_Tool)
 
-target_include_directories(infinite_Automata_Tool PRIVATE ./header )
+file(GLOB SRC "./src/*.cpp")
 
-target_include_directories(infinite_Automata_Tool PRIVATE./SFML/include)
+set(SOURCE
+    ./main.cpp
+    ${SRC}
+)
 
-target_link_directories(infinite_Automata_Tool PRIVATE./SFML/lib)
+add_executable(
+    infinite_Automata_Tool
+    ${SOURCE}
+)
 
-target_link_libraries( infinite_Automata_Tool sfml-graphics sfml-window sfml-system)
+# Include folders
+target_include_directories(
+    infinite_Automata_Tool
+    PRIVATE
+    ./header
+    ./SFML/include
+)
+
+# Local library folder
+target_link_directories(
+    infinite_Automata_Tool
+    PRIVATE
+    ./SFML/lib
+)
+
+# Link libraries
+target_link_libraries(
+    infinite_Automata_Tool
+    sfml-graphics
+    sfml-window
+    sfml-system
+)
