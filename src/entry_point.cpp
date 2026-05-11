@@ -63,6 +63,8 @@ void entry_point(const std::string &path) {
 
         else if (text->unicode == 13) {
           bool accepted = false;
+          if(user_input=="exit" || user_input=="EXIT")
+          window.close();
 
           if (init.automata_name == "ra" || init.automata_name == "RA") {
             if (!transition_pair.ra_pair.empty()) {
